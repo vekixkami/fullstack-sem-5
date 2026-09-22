@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShopKart</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 text-gray-900">
+
+  <nav class="h-16 px-6 bg-white border-b flex items-center justify-between">
+
+    <h2 class="font-bold text-blue-600">
+      ShopKart
+    </h2>
+
+    <div class="hidden sm:flex">
+      <input
+        id="search"
+        type="text"
+        placeholder="Search products..."
+        class="border rounded-full px-4 py-2 w-64 text-sm outline-none">
+    </div>
+
+    <div class="flex gap-4">
+      <span>cart</span>
+      <span>account</span>
+    </div>
+
+  </nav>
+
+
+  <main class="max-w-[1200px] mx-auto p-6">
+
+    <div class="flex gap-8">
+
+
+      <aside class="hidden lg:block w-60 bg-white border p-4">
+
+        <h3 class="font-semibold mb-4">
+          Filters
+        </h3>
+
+        <h4 class="font-semibold text-sm">
+          Category
+        </h4>
+
+        <label class="block text-sm mt-2">
+          <input type="checkbox"> Weird Stuff
+        </label>
+
+        <label class="block text-sm mt-2">
+          <input type="checkbox"> Useful Stuff
+        </label>
+
+        <label class="block text-sm mt-2">
+          <input type="checkbox"> Totally Useless
+        </label>
+
+        <h4 class="font-semibold text-sm mt-6">
+          Price Range
+        </h4>
+
+        <label class="block text-sm mt-2">
+          <input type="checkbox"> Under ₹500
+        </label>
+
+        <label class="block text-sm mt-2">
+          <input type="checkbox"> ₹500 - ₹2000
+        </label>
+
+        <label class="block text-sm mt-2">
+          <input type="checkbox"> Above ₹2000
+        </label>
+
+      </aside>
+
+
+      <section class="flex-1">
+
+        <div class="lg:hidden flex gap-3 mb-6">
+
+          <button class="bg-white border px-4 py-2">
+            Filters
+          </button>
+
+          <button class="bg-white border px-4 py-2">
+            Sort
+          </button>
+
+        </div>
+
+
+        <div class="flex justify-between mb-6">
+
+          <h1 class="text-xl font-bold">
+            Random Things
+          </h1>
+
+          <p class="text-sm text-gray-500">
+            6 Products
+          </p>
+
+        </div>
+
+
+        <div
+          id="products"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+
+          <div class="product bg-white border p-4 flex flex-col">
+
+            <div class="h-44 bg-gray-100 flex items-center justify-center overflow-hidden">
+
+              <span class="text-7xl product-img">
+                🥔
+              </span>
+
+            </div>
+
+            <p class="text-xs text-gray-500 mt-4">
+              Totally Useless
+            </p>
+
+            <h2 class="font-semibold text-base mt-1">
+              Premium Potato
+            </h2>
+
+            <p class="text-yellow-500 text-sm mt-2">
+              ★★★★★
+            </p>
+
+            <p class="font-bold text-xl mt-2">
+              ₹99
+            </p>
+
+            <p class="text-sm text-gray-500 line-through">
+              ₹199
+            </p>
+
+            <span class="text-red-600 text-xs font-semibold">
+              SALE
+            </span>
+
+            <button class="cart bg-blue-600 text-white py-2 mt-4">
+              Add to Cart
+            </button>
+
+          </div>
+
+
+          <div class="product bg-white border p-4 flex flex-col">
+
+            <div class="h-44 bg-gray-100 flex items-center justify-center overflow-hidden">
+
+              <span class="text-7xl product-img">
+                🦆
+              </span>
+
+            </div>
+
+            <p class="text-xs text-gray-500 mt-4">
+              Weird Stuff
+            </p>
+
+            <h2 class="font-semibold text-base mt-1">
+              Rubber Duck Pro Max
+            </h2>
+
+            <p class="text-yellow-500 text-sm mt-2">
+              ★★★★☆
+            </p>
+
+            <p class="font-bold text-xl mt-2">
+              ₹499
+            </p>
+
+            <p class="text-sm text-gray-500 line-through">
+              ₹799
+            </p>
+
+            <span class="text-green-600 text-xs font-semibold">
+              NEW
+            </span>
+
+            <button class="cart bg-blue-600 text-white py-2 mt-4">
+              Add to Cart
+            </button>
+
+          </div>
+
+
+          <div class="product bg-white border p-4 flex flex-col">
+
+            <div class="h-44 bg-gray-100 flex items-center justify-center overflow-hidden">
+
+              <span class="text-7xl product-img">
+                🧦
+              </span>
+
+            </div>
+
+            <p class="text-xs text-gray-500 mt-4">
+              Useful Stuff
+            </p>
+
+            <h2 class="font-semibold text-base mt-1">
+              Left Sock Only
+            </h2>
+
+            <p class="text-yellow-500 text-sm mt-2">
+              ★★★★☆
+            </p>
+
+            <p class="font-bold text-xl mt-2">
+              ₹149
+            </p>
+
+            <p class="text-sm text-gray-500 line-through">
+              ₹299
+            </p>
+
+            <span class="text-red-600 text-xs font-semibold">
+              SALE
+            </span>
+
+            <button class="cart bg-blue-600 text-white py-2 mt-4">
+              Add to Cart
+            </button>
+
+          </div>
+
+
+          <div class="product bg-white border p-4 flex flex-col">
+
+            <div class="h-44 bg-gray-100 flex items-center justify-center overflow-hidden">
+
+              <span class="text-7xl product-img">
+                🪨
+              </span>
+
+            </div>
+
+            <p class="text-xs text-gray-500 mt-4">
+              Totally Useless
+            </p>
+
+            <h2 class="font-semibold text-base mt-1">
+              Premium Rock
+            </h2>
+
+            <p class="text-yellow-500 text-sm mt-2">
+              ★★★★★
+            </p>
+
+            <p class="font-bold text-xl mt-2">
+              ₹999
+            </p>
+
+            <p class="text-sm text-gray-500 line-through">
+              ₹1,499
+            </p>
+
+            <button class="cart bg-blue-600 text-white py-2 mt-4">
+              Add to Cart
+            </button>
+
+          </div>
+
+
+          <div class="product bg-white border p-4 flex flex-col">
+
+            <div class="h-44 bg-gray-100 flex items-center justify-center overflow-hidden">
+
+              <span class="text-7xl product-img">
+                🥄
+              </span>
+
+            </div>
+
+            <p class="text-xs text-gray-500 mt-4">
+              Useful Stuff
+            </p>
+
+            <h2 class="font-semibold text-base mt-1">
+              Golden Spoon
+            </h2>
+
+            <p class="text-yellow-500 text-sm mt-2">
+              ★★★★☆
+            </p>
+
+            <p class="font-bold text-xl mt-2">
+              ₹299
+            </p>
+
+            <p class="text-sm text-gray-500 line-through">
+              ₹499
+            </p>
+
+            <span class="text-green-600 text-xs font-semibold">
+              NEW
+            </span>
+
+            <button class="cart bg-blue-600 text-white py-2 mt-4">
+              Add to Cart
+            </button>
+
+          </div>
+
+
+          <div class="product bg-white border p-4 flex flex-col">
+
+            <div class="h-44 bg-gray-100 flex items-center justify-center overflow-hidden">
+
+              <span class="text-7xl product-img">
+                🧸
+              </span>
+
+            </div>
+
+            <p class="text-xs text-gray-500 mt-4">
+              Weird Stuff
+            </p>
+
+            <h2 class="font-semibold text-base mt-1">
+              Tiny Emotional Support Bear
+            </h2>
+
+            <p class="text-yellow-500 text-sm mt-2">
+              ★★★★★
+            </p>
+
+            <p class="font-bold text-xl mt-2">
+              ₹799
+            </p>
+
+            <p class="text-sm text-gray-500 line-through">
+              ₹999
+            </p>
+
+            <button class="cart bg-blue-600 text-white py-2 mt-4">
+              Add to Cart
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <style>
+
+    .product:hover {
+      box-shadow: 0 2px 8px #ddd;
+    }
+
+    .product-img {
+      transition: 0.2s;
+    }
+
+    .product:hover .product-img {
+      transform: scale(1.05);
+    }
+
+    .cart:hover {
+      background: #1d4ed8;
+    }
+
+  </style>
+
+
+
+
+</body>
+</html>
