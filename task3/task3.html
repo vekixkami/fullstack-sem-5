@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>AdminPro</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+
+
+    .sidebar {
+      width: 240px;
+      height: 100vh;
+      background: #0f172a;
+      color: white;
+      position: fixed;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+
+    .menu p {
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .menu .active {
+      background: #4f46e5;
+      border-radius: 5px;
+    }
+
+
+
+    .main {
+      margin-left: 240px;
+    }
+
+
+
+    header {
+      height: 64px;
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 30px;
+    }
+
+    header input {
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+
+
+    .content {
+      padding: 30px;
+    }
+
+
+
+    .kpi {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .number {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .green {
+      color: #16a34a;
+    }
+
+
+    /* MAIN ANALYTICS */
+
+    .analytics {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+
+    /* SIMPLE GRAPH */
+
+    .graph {
+      height: 200px;
+
+      display: flex;
+      align-items: end;
+      gap: 15px;
+
+      padding-top: 20px;
+    }
+
+    .bar {
+      width: 30px;
+      background: #4f46e5;
+    }
+
+
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+
+
+    .lower {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+
+
+    .product {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+
+
+    .menu-button {
+      display: none;
+    }
+
+    @media (max-width: 1023px) {
+
+      .kpi {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .analytics {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 767px) {
+
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      header {
+        width: 100%;
+        padding: 0 15px;
+      }
+
+      .content {
+        padding: 15px;
+      }
+
+      .kpi {
+        grid-template-columns: 1fr;
+      }
+
+      .analytics {
+        grid-template-columns: 1fr;
+      }
+
+      .lower {
+        grid-template-columns: 1fr;
+      }
+
+      header input {
+        display: none;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+
+  <aside class="sidebar">
+
+    <h2>AdminPro</h2>
+
+    <div class="menu">
+
+      <p class="active">Dashboard</p>
+      <p>Analytics</p>
+      <p>Users</p>
+      <p>Orders</p>
+      <p>Products</p>
+      <p>Settings</p>
+
+    </div>
+
+  </aside>
+
+
+
+
+  <div class="main">
+
+
+
+    <header>
+
+      <h2>Dashboard</h2>
+
+      <div>
+
+        <input
+          type="text"
+          placeholder="Search...">
+
+        <span> 🔔 </span>
+
+        <span> 👤 </span>
+
+        <button class="menu-button">
+          ☰
+        </button>
+
+      </div>
+
+    </header>
+
+
+
+
+    <div class="content">
+
+
+
+      <div class="kpi">
+
+        <div class="card">
+
+          <p>Total Revenue</p>
+
+          <div class="number">
+            ₹1,24,532
+          </div>
+
+          <span class="green">
+            ↑ 12%
+          </span>
+
+        </div>
+
+
+        <div class="card">
+
+          <p>Total Orders</p>
+
+          <div class="number">
+            892
+          </div>
+
+          <span class="green">
+            ↑ 8%
+          </span>
+
+        </div>
+
+
+        <div class="card">
+
+          <p>Active Users</p>
+
+          <div class="number">
+            3,521
+          </div>
+
+          <span class="green">
+            ↑ 14%
+          </span>
+
+        </div>
+
+
+        <div class="card">
+
+          <p>Conversion Rate</p>
+
+          <div class="number">
+            4.2%
+          </div>
+
+          <span class="green">
+            ↑ 2%
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+
+      <div class="analytics">
+
+
+
+        <div class="card">
+
+          <h3>Revenue Overview</h3>
+
+          <h3>₹1,24,532</h3>
+
+          <div class="graph">
+
+            <div class="bar" style="height: 40px;"></div>
+            <div class="bar" style="height: 60px;"></div>
+            <div class="bar" style="height: 50px;"></div>
+            <div class="bar" style="height: 90px;"></div>
+            <div class="bar" style="height: 80px;"></div>
+            <div class="bar" style="height: 120px;"></div>
+            <div class="bar" style="height: 110px;"></div>
+            <div class="bar" style="height: 150px;"></div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <div class="card">
+
+          <h3>Recent Orders</h3>
+
+          <div class="table-container">
+
+            <table>
+
+              <tr>
+                <th>Customer</th>
+                <th>Amount</th>
+              </tr>
+
+              <tr>
+                <td>Rahul</td>
+                <td>₹2,499</td>
+              </tr>
+
+              <tr>
+                <td>Priya</td>
+                <td>₹4,099</td>
+              </tr>
+
+              <tr>
+                <td>Amit</td>
+                <td>₹1,299</td>
+              </tr>
+
+              <tr>
+                <td>Neha</td>
+                <td>₹2,799</td>
+              </tr>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+
+      <div class="lower">
+
+
+
+        <div class="card">
+
+          <div style="display:flex; justify-content:space-between;">
+
+            <h3>Traffic Overview</h3>
+
+            <span class="green">
+              ↑ 18%
+            </span>
+
+          </div>
+
+          <div class="number">
+            8,432
+          </div>
+
+          <p>Total Visitors</p>
+
+
+          <div class="graph">
+
+            <div class="bar" style="height:40px;"></div>
+            <div class="bar" style="height:60px;"></div>
+            <div class="bar" style="height:80px;"></div>
+            <div class="bar" style="height:50px;"></div>
+            <div class="bar" style="height:100px;"></div>
+            <div class="bar" style="height:120px;"></div>
+            <div class="bar" style="height:150px;"></div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TOP PRODUCTS -->
+
+        <div class="card">
+
+          <h3>Top Products</h3>
+
+          <div class="product">
+            <span>Laptop Pro</span>
+            <span>2,450</span>
+          </div>
+
+          <div class="product">
+            <span>Wireless Earbuds</span>
+            <span>1,900</span>
+          </div>
+
+          <div class="product">
+            <span>Smart Watch</span>
+            <span>1,203</span>
+          </div>
+
+          <div class="product">
+            <span>Backpack</span>
+            <span>902</span>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</body>
+</html>
