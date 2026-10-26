@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+</head>
+
+<body>
+
+    <h1>Checkout</h1>
+
+    <h2>Your Cart</h2>
+
+    <div id="cart"></div>
+
+    <hr>
+
+    <h2>Suggested Products</h2>
+
+    <p>
+        Leather Wallet - ₹999
+        <button onclick="addWallet()">Add</button>
+    </p>
+
+    <p>
+        Classic Cap - ₹499
+        <button onclick="addCap()">Add</button>
+    </p>
+
+    <hr>
+
+    <h2>Order Summary</h2>
+
+    <p>Subtotal: ₹<span id="subtotal">0</span></p>
+
+    <p>Discount: -₹<span id="discount">0</span></p>
+
+    <p>Shipping: ₹<span id="shipping">0</span></p>
+
+    <h3>Total: ₹<span id="total">0</span></h3>
+
+    <h3>Discount Code</h3>
+
+    <input id="discountCode" placeholder="Enter code">
+
+    <button onclick="applyDiscount()">Apply</button>
+
+    <p id="message"></p>
+
+    <button>Proceed to Checkout</button>
+
+
+    <script>
+
+        let cart = [
+            {
+                id: 1,
+                name: "Classic T-Shirt",
+                price: 799,
+                quantity: 2
+            },
+            {
+                id: 2,
+                name: "Running Shoes",
+                price: 2499,
+                quantity: 1
+            },
+            {
+                id: 3,
+                name: "Denim Jeans",
+                price: 1999,
+                quantity: 1
+            }
+        ];
+
+        let discountPercent = 0;
+
+
+        function displayCart() {
+
+            let cartElement = document.getElementById("cart");
+
+            cartElement.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartElement.innerHTML = "<p>Your cart is empty.</p>";
+                updateSummary();
+                return;
+            }
+
+            cart.forEach(product => {
+
+                cartElement.innerHTML += `
+                    <div>
+                        <h3>${product.name}</h3>
+
+                        <p>Price: ₹${product.price}</p>
+
+                        <button onclick="decreaseQuantity(${product.id})">
+                            -
+                        </button>
+
+                        ${product.quantity}
+
+                        <button onclick="increaseQuantity(${product.id})">
+                            +
+                        </button>
+
+                        <button onclick="removeProduct(${product.id})">
+                            Remove
+                        </button>
+                    </div>
+
+                    <hr>
+                `;
+
+            });
+
+            updateSummary();
+        }
+
+
+        function increaseQuantity(id) {
+
+            let product = cart.find(p => p.id === id);
+
+            product.quantity++;
+
+            displayCart();
+        }
+
+
+        function decreaseQuantity(id) {
+
+            let product = cart.find(p => p.id === id);
+
+            if (product.quantity > 1) {
+                product.quantity--;
+            } else {
+                removeProduct(id);
+                return;
+            }
+
+            displayCart();
+        }
+
+
+        function removeProduct(id) {
+
+            cart = cart.filter(p => p.id !== id);
+
+            displayCart();
+        }
+
+
+        function addWallet() {
+
+            let product = cart.find(p => p.id === 4);
+
+            if (product) {
+                product.quantity++;
+            } else {
+                cart.push({
+                    id: 4,
+                    name: "Leather Wallet",
+                    price: 999,
+                    quantity: 1
+                });
+            }
+
+            displayCart();
+        }
+
+
+        function addCap() {
+
+            let product = cart.find(p => p.id === 5);
+
+            if (product) {
+                product.quantity++;
+            } else {
+                cart.push({
+                    id: 5,
+                    name: "Classic Cap",
+                    price: 499,
+                    quantity: 1
+                });
+            }
+
+            displayCart();
+        }
+
+
+        function updateSummary() {
+
+            let subtotal = 0;
+
+            cart.forEach(product => {
+                subtotal += product.price * product.quantity;
+            });
+
+
+            let discount =
+                subtotal * discountPercent / 100;
+
+
+            let shipping = 100;
+
+            if (subtotal >= 3000) {
+                shipping = 0;
+            }
+
+            if (subtotal === 0) {
+                shipping = 0;
+            }
+
+
+            let total =
+                subtotal - discount + shipping;
+
+
+            document.getElementById("subtotal").innerText =
+                subtotal.toFixed(2);
+
+            document.getElementById("discount").innerText =
+                discount.toFixed(2);
+
+            document.getElementById("shipping").innerText =
+                shipping;
+
+            document.getElementById("total").innerText =
+                total.toFixed(2);
+        }
+
+
+        function applyDiscount() {
+
+            let code =
+                document.getElementById("discountCode").value
+                .trim()
+                .toUpperCase();
+
+            let message =
+                document.getElementById("message");
+
+
+            if (code === "SAVE10") {
+
+                discountPercent = 10;
+
+                message.innerText =
+                    "10% discount applied.";
+
+            } else {
+
+                discountPercent = 0;
+
+                message.innerText =
+                    "Invalid discount code.";
+            }
+
+            updateSummary();
+        }
+
+
+        displayCart();
+
+    </script>
+
+</body>
+</html>
